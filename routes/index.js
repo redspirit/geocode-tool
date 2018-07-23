@@ -22,7 +22,7 @@ router.route('/stat')
   .get(getStat)
 
 function geocode(req, res, next) {
-  
+
   var inbox = req.body.slice(0, config.get('limit:request'));
 
   if(dailyStat.get().miss > config.get('limit:daily')) {

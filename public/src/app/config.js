@@ -13,11 +13,11 @@ ym.modules.define('app-config', [
       }
     },
     stat: {
-      url: 'api/v1/stat/',
+      url: '/geocode/api/v1/stat/',
       method: 'GET'
     },
     geocodeProvider: {
-      url: 'api/v1/geocode/',
+      url: '/geocode/api/v1/geocode/',
       method: 'POST'
     },
     form: {

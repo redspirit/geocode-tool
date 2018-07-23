@@ -15,12 +15,17 @@ var api = require('./routes');
 app.set('json spaces', 2);
 app.use(bodyParser.json({ limit: 100000000 }));
 app.use(function (req, res, next) {
-  logger.info({ url: req.url, method: req.method, headers: req.headers, query: req.query });
+  logger.info({ url: req.url, method: req.method, query: req.query });
   next();
 });
 app.use(cors);
 app.use(uncaughtExceptionHandler);
-app.use('/api/v1', api);
+app.use('/geocode-tool/api/v1', api);
+
+app.use(express.static(__dirname + '/public', {
+    index: 'index.html'
+}));
+
 app.use(errorHandler);
 
 var host = config.get('server:hostname');

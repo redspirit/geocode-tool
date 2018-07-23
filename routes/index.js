@@ -3,6 +3,7 @@ var router = express.Router();
 
 var config = require('../config');
 var MultiGeocoder = require('multi-geocoder');
+var _ = require('underscore');
 var CacheStat = require('../lib/cache-stat');
 var DailyCacheStat = require('../lib/daily-cache-stat');
 var geocoder = new MultiGeocoder({ provider: 'yandex-cache', coordorder: 'latlong' });
@@ -21,6 +22,7 @@ router.route('/stat')
   .get(getStat)
 
 function geocode(req, res, next) {
+  
   var inbox = req.body.slice(0, config.get('limit:request'));
 
   if(dailyStat.get().miss > config.get('limit:daily')) {

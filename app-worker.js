@@ -15,7 +15,7 @@ var api = require('./routes');
 app.set('json spaces', 2);
 app.use(bodyParser.json({ limit: 100000000 }));
 app.use(function (req, res, next) {
-  logger.info({ url: req.url, method: req.method, query: req.query });
+  logger.info({ url: req.url, method: req.method, body: req.body });
   next();
 });
 app.use(cors);
